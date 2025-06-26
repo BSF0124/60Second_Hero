@@ -155,19 +155,20 @@ public class UpgradeUIManager : MonoBehaviour
         double minCost = damageUpCost;
         StatType cheapest = StatType.Damage;
 
-        if (attackSpeedUpCost < minCost) { minCost = attackSpeedUpCost; cheapest = StatType.AttackSpeed; }
+        if (attackSpeedUpCost < minCost || minCost < 0) { minCost = attackSpeedUpCost; cheapest = StatType.AttackSpeed; }
 
-        if (criticalDamageUpCost < minCost) { minCost = criticalDamageUpCost; cheapest = StatType.CriticalDamage; }
+        if (criticalDamageUpCost < minCost || minCost < 0) { minCost = criticalDamageUpCost; cheapest = StatType.CriticalDamage; }
         
         if (criticalChanceUpCost < minCost &&
             partyManager.mainPlayer.stats.criticalChance_LV < GameConstants.MaxCriticalChanceLevel &&
             partyManager.mainPlayer.stats.passive != Passive.CriticalX2)
         {
-            //minCost = criticalChanceUpCost;
+            minCost = criticalChanceUpCost;
             cheapest = StatType.CriticalChance;
         }
 
-        TryUpgrade(cheapest);
+        if(minCost > 0)
+            TryUpgrade(cheapest);
     }
 
     /// <summary>
@@ -196,9 +197,29 @@ public class UpgradeUIManager : MonoBehaviour
     {
         double gold = DataManager.instance.gameData.gold;
 
-        UpdateButtonVisual(damageUp, gold >= damageUpCost, $"공격력 +{NumberFormatter.FormatNumber(1 * Mathf.Pow(2, partyManager.mainPlayer.stats.damage_LV - 1))} \n<color=#50C878>${NumberFormatter.FormatNumber(damageUpCost)}</color>");
-        UpdateButtonVisual(attackSpeedUp, gold >= attackSpeedUpCost, $"공격 속도 +0.5 \n<color=#50C878>${NumberFormatter.FormatNumber(attackSpeedUpCost)}</color>");
-        UpdateButtonVisual(criticalDamageUp, gold >= criticalDamageUpCost, $"치명타 데미지 +5% \n<color=#50C878>${NumberFormatter.FormatNumber(criticalDamageUpCost)}</color>");
+        if (damageUpCost >= 0)
+            UpdateButtonVisual(damageUp, gold >= damageUpCost, $"공격력 +{NumberFormatter.FormatNumber(1 * Mathf.Pow(2, partyManager.mainPlayer.stats.damage_LV - 1))} \n<color=#50C878>${NumberFormatter.FormatNumber(damageUpCost)}</color>");
+        else
+        {
+            damageUp.interactable = false;
+            UpdateButtonVisual(damageUp, false, $"공격력 MAX");
+        }
+
+        if (attackSpeedUpCost >= 0)
+            UpdateButtonVisual(attackSpeedUp, gold >= attackSpeedUpCost, $"공격 속도 +0.5 \n<color=#50C878>${NumberFormatter.FormatNumber(attackSpeedUpCost)}</color>");
+        else
+        {
+            attackSpeedUp.interactable = false;
+            UpdateButtonVisual(attackSpeedUp, false, $"공격 속도 MAX");
+        }
+
+        if (criticalDamageUpCost >= 0)
+            UpdateButtonVisual(criticalDamageUp, gold >= criticalDamageUpCost, $"치명타 데미지 +5% \n<color=#50C878>${NumberFormatter.FormatNumber(criticalDamageUpCost)}</color>");
+        else
+        {
+            criticalDamageUp.interactable = false;
+            UpdateButtonVisual(criticalDamageUp, false, $"치명타 데미지 MAX");
+        }
 
         if (partyManager.mainPlayer.stats.criticalChance_LV >= GameConstants.MaxCriticalChanceLevel)
         {
@@ -220,7 +241,6 @@ public class UpgradeUIManager : MonoBehaviour
         {
             criticalChanceUp.interactable = true;
             UpdateButtonVisual(criticalChanceUp, gold >= criticalChanceUpCost, $"치명타 확률 +5% \n<color=#50C878>${NumberFormatter.FormatNumber(criticalChanceUpCost)}</color>");
-
         }
 
         gameManager.UpdateTexts();
