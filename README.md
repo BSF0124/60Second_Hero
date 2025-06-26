@@ -8,7 +8,7 @@
 
 **60초 용사**는 픽셀 아트 스타일의 **방치형 클리커 게임**입니다.
 
-본 저장소는 게임의 클라이언트 기능 중 강화 / 패시브 / 저장 / 옵션 설정 시스템을 모듈 단위로 정리한 기술 포트폴리오입니다.
+본 저장소는 게임의 클라이언트 기능 중 강화 / 패시브 / 저장 / 옵션 설정 등의 시스템을 모듈 단위로 정리한 기술 포트폴리오입니다.
 
 > 📌 이 게임은 인디게임 커뮤니티 ‘만들래’에서 열린 공모전에서 4위를 수상했습니다.
 > 
@@ -19,7 +19,62 @@
 
 ---
 
-## 🎥 데모 & 스크린샷
+## 🎬 게임 플레이 영상
+
+> 아래 이미지를 클릭하면 유튜브에서 플레이 영상을 볼 수 있습니다.
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=0YsCDdN3RmY">
+    <img src="https://github.com/BSF0124/60Second_Hero/blob/main/Src/Thumbnail.png" width="70%">
+  </a>
+</p>
+
+---
+
+## 📸 대표 스크린샷
+
+<p align="center">
+  <img src="Src/gamePlay_1.gif" width="45%">
+  <img src="Src/gamePlay_2.gif" width="45%">
+</p>
+
+<br>
+
+<details>
+  <summary>📖 튜토리얼</summary>
+
+  <p align="center">
+    <img src="Src/tutorial_1.png" width="45%">
+    <img src="Src/tutorial_2.png" width="45%">
+  </p>
+</details>
+
+<details>
+  <summary>💥 어빌리티</summary>
+
+  <p align="center">
+    <img src="Src/ability_1.png" width="45%">
+    <img src="Src/ability_2.png" width="45%">
+  </p>
+</details>
+
+<details>
+  <summary>📊 패시브 & 캐릭터 스탯</summary>
+
+  <p align="center">
+    <img src="Src/passive.gif" width="45%">
+    <img src="Src/stats.png" width="45%">
+  </p>
+</details>
+
+<details>
+  <summary>🧙 게임 오버 & 파티</summary>
+
+  <p align="center">
+    <img src="Src/gameOver.png" width="45%">
+    <img src="Src/party.png" width="45%">
+  </p>
+</details>
 
 ---
 
@@ -90,8 +145,13 @@
 
 ---
 
-## 📨 문의
+## 📥 다운로드 & 문서
 
-- 개발자: 나윤재
-- GitHub: [github.com/BSF0124](https://github.com/BSF0124)
-- Email: [dbsdbds4532@naver.com]
+- 🎮 **게임 다운로드**  
+  👉 [다운로드 페이지 바로가기](https://mandlemandle.com/project/c07899/game?contest=10%EB%B6%84%EA%B2%8C%EC%9E%84%EB%B0%A9%EC%B9%98%ED%8E%B8)   
+
+- 📚 **기술 문서 보기**  
+  👉 [문서 PDF 바로가기](https://github.com/BSF0124)   
+  
+- ✍️ **개발 후기 및 기술 소개 (velog)**  
+  👉 [Velog 글 읽기](https://velog.io/@dbsdbds4532)
