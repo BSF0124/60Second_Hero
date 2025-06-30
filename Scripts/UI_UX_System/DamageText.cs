@@ -54,7 +54,7 @@ public class DamageText : MonoBehaviour
     /// 데미지 텍스트 효과 출력
     /// </summary>
     /// <param name="damage">표시할 데미지 수치</param>
-    /// <param name="type">0:기본, 1:크리티컬, 2:강화공격, 3:추가공격</param>
+    /// <param name="type">0:일반, 1:크리티컬, 2:강화공격, 3:추가공격</param>
     public void Bounce(double damage, int type)
     {
         tmp.text = NumberFormatter.FormatNumber(damage);
@@ -65,27 +65,34 @@ public class DamageText : MonoBehaviour
 
         switch (type)
         {
-            case 1:
-                tmp.color = Color.red;
+            case 1: // 크리티컬
+                tmp.color = new Color(1f, 0.2f, 0.2f); // 진홍색
                 randomX = Random.Range(-3f, 3f);
-                randomY = Random.Range(4f, 6f);
-                rectTransform.DOScale(Vector3.one * 1.7f, duration).SetEase(Ease.OutBack);
+                randomY = Random.Range(5f, 7f);
+                rectTransform.DOShakeScale(duration, 1.2f, 10, 90);
                 break;
-            case 2:
-                tmp.color = new Color(1f, 0.27f, 0f);
-                randomX = Random.Range(-3f, 3f);
-                randomY = Random.Range(6f, 8f);
-                rectTransform.DOScale(Vector3.one * 2.5f, duration).SetEase(Ease.OutBack);
-                break;
-            case 3:
-                tmp.color = new Color(0.66f, 0.33f, 1f);
-                randomX = Random.Range(-3f, 3f);
-                randomY = Random.Range(7f, 10f);
-                rectTransform.DOScale(Vector3.one * 1.7f, duration).SetEase(Ease.OutBack);
-                break;
-            default:
+            case 2: // 강화 공격
+                tmp.color = new Color(1f, 0.55f, 0f); // 주황색
                 randomX = Random.Range(-2f, 2f);
-                randomY = Random.Range(3f, 4f);
+                randomY = Random.Range(7f, 9f);
+                rectTransform.localScale = Vector3.zero;
+                rectTransform.DOScale(Vector3.one * 2.7f, duration)
+                    .SetEase(Ease.OutBack)
+                    .OnComplete(() => rectTransform.DOScale(Vector3.one * 1.2f, 0.15f));
+                break;
+            case 3: // 추가 공격
+                tmp.color = new Color(0.6f, 0.4f, 1f); // 보라색
+                randomX = Random.Range(-4f, 4f);
+                randomY = Random.Range(8f, 11f);
+                rectTransform.DOScale(Vector3.one * 2.2f, duration).SetEase(Ease.OutBounce);
+                rectTransform.DORotate(new Vector3(0, 0, 360), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.OutQuad);
+                break;
+            default: // 일반
+                tmp.color = Color.white;
+                randomX = Random.Range(-2f, 2f);
+                randomY = Random.Range(3f, 5f);
+                rectTransform.DOScale(Vector3.one * 1.2f, duration).SetEase(Ease.Linear);
+                rectTransform.DOShakeAnchorPos(0.2f, 5f, 10, 90);
                 break;
         }
 
