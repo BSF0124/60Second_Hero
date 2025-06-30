@@ -74,13 +74,18 @@ public class Player : MonoBehaviour
     /// <summary>
     /// 공격 실행: 대미지 계산 -> 적에게 전달 -> 골드 획득 -> 추가 공격 여부 판단
     /// </summary>
-    public void TryAttack()
+    public void TryAttack(bool isExtra = false)
     {
         if(isEffectActive) playerAnimator.SetTrigger("Attack");
         double damage = CalculateDamage(out int damageType);
+
+        if (isExtra) damageType = 3;
+
         partyManager.enemy.TakeDamage(damage, damageType, isEffectActive);
         GainGold(damage);
-        TryExtraAttack();
+        
+        if (!isExtra)
+            TryExtraAttack();
     }
 
     /// <summary>
@@ -89,8 +94,7 @@ public class Player : MonoBehaviour
     private double CalculateDamage(out int type)
     {
         type = 0;
-        double baseDamage = 1 * Mathf.Pow(2, stats.damage_LV - 1);
-        double damage = baseDamage;
+        double damage = Mathf.Pow(2, stats.damage_LV - 1);
 
         // 패시브 적용 효과
         var passive = stats.passive;
@@ -184,7 +188,7 @@ public class Player : MonoBehaviour
 
         if(rand <= chance)
         {
-            TryAttack();
+            TryAttack(true);
         }
     }
 
@@ -229,7 +233,7 @@ public class Player : MonoBehaviour
         Mathf.Abs(panelPosition.x) : -Mathf.Abs(panelPosition.x);
         panelRect.anchoredPosition = panelPosition;
 
-        double baseDamage = 1 * Mathf.Pow(2, stats.damage_LV - 1);
+        double baseDamage = Mathf.Pow(2, stats.damage_LV - 1);
         double damageBuff = transform.parent.GetComponent<PartyManager>().damageBuff;
         if (stats.passive == Passive.DamageUp)
         {
