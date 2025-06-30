@@ -212,6 +212,6 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        // Process.GetCurrentProcess().Kill();
+        Process.GetCurrentProcess().Kill();
     }
 }
