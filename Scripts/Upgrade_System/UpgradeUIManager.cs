@@ -60,7 +60,7 @@ public class UpgradeUIManager : MonoBehaviour
         abilityPointText.text = DataManager.instance.gameData.abilityPoint > 0 ?
         $"어빌리티 <color=#00FF00>({DataManager.instance.gameData.abilityPoint})</color>" : "어빌리티";
 
-        UpdateGold();
+        UpdateCosts();
     }
 
     private void Update()
@@ -135,7 +135,7 @@ public class UpgradeUIManager : MonoBehaviour
         }
 
         SavePlayerData();
-        UpdateGold();
+        UpdateCosts();
     }
 
     private Button GetButton(StatType type) => type switch
@@ -182,7 +182,7 @@ public class UpgradeUIManager : MonoBehaviour
     /// <summary>
     /// 강화 비용 텍스트 및 버튼 상태 갱신
     /// </summary>
-    public void UpdateGold()
+    public void UpdateCosts()
     {
         if (partyManager.mainPlayer == null) return;
 
