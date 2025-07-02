@@ -210,13 +210,9 @@ public class UpgradeUIManager : MonoBehaviour
         UpdateButtonVisual(criticalDamageUp, gold >= criticalDamageUpCost, $"치명타 데미지 +5% \n<color=#50C878>${NumberFormatter.FormatNumber(criticalDamageUpCost)}</color>");
 
         if (partyManager.mainPlayer.stats.criticalChance_LV >= GameConstants.MaxCriticalChanceLevel)
-        {
-            criticalChanceUp.interactable = false;
             UpdateButtonVisual(criticalChanceUp, false, "치명타 확률 MAX");
-        }
         else if (partyManager.mainPlayer.stats.passive == Passive.CriticalX2)
         {
-            criticalChanceUp.interactable = false;
             string label = partyManager.mainPlayer.stats.rarity switch
             {
                 Rarity.Rare => "치명타 확률 50%",
@@ -226,16 +222,15 @@ public class UpgradeUIManager : MonoBehaviour
             UpdateButtonVisual(criticalChanceUp, false, label);
         }
         else
-        {
-            criticalChanceUp.interactable = true;
             UpdateButtonVisual(criticalChanceUp, gold >= criticalChanceUpCost, $"치명타 확률 +5% \n<color=#50C878>${NumberFormatter.FormatNumber(criticalChanceUpCost)}</color>");
-        }
-
+        
         gameManager.UpdateTexts();
     }
 
     private void UpdateButtonVisual(Button button, bool activate, string labelText)
     {
+        button.interactable = activate;
+
         var color = activate ? Color.white : Color.gray;
         button.GetComponent<Image>().color = color;
 
