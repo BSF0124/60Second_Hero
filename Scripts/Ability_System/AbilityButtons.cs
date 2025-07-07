@@ -10,7 +10,7 @@ public class AbilityButtons : MonoBehaviour
     public Button[] abilityButtons;
     public Button activateButton;
     public Button cancelButton;
-    public TextMeshProUGUI explainText;
+    public TextMeshProUGUI descriptionsText;
     public TextMeshProUGUI abilityPointText;
     public TextMeshProUGUI titleText;
 
@@ -41,7 +41,7 @@ public class AbilityButtons : MonoBehaviour
     /// <summary>
     /// 어빌리티 설명 텍스트 갱신
     /// </summary>
-    public void UpdateExplainText()
+    public void UpdateDescriptionsText()
     {
         string[] titles =
         {
@@ -65,12 +65,12 @@ public class AbilityButtons : MonoBehaviour
         if (index >= 0 && index < titles.Length)
         {
             titleText.text = titles[index];
-            explainText.text = descriptions[index];
+            descriptionsText.text = descriptions[index];
         }
         else
         {
             titleText.text = "";
-            explainText.text = "";
+            descriptionsText.text = "";
         }
 
         UpdateActivateText();
@@ -169,7 +169,7 @@ public class AbilityButtons : MonoBehaviour
             }
         }
 
-        UpdateExplainText();
+        UpdateDescriptionsText();
         UpdateButtons();
         UpdateAbilityPointText();
         AudioManager.instance.PlaySfx(0);
