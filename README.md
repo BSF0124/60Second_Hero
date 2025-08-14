@@ -163,5 +163,5 @@
 - 🎮 **게임 다운로드**  
   👉 [다운로드 페이지 바로가기](https://mandlemandle.com/project/c07899/game?contest=10%EB%B6%84%EA%B2%8C%EC%9E%84%EB%B0%A9%EC%B9%98%ED%8E%B8)    
   
-- ✍️ **개발 후기 및 기술 소개 (velog)**  
-  👉 [Velog 글 읽기](https://velog.io/@dbsdbds4532)
+- ✍️ **기술 소개 velog**  
+  👉 [Velog 글 읽기](https://velog.io/@dbsdbds4532/series/60%EC%B4%88-%EC%9A%A9%EC%82%AC)
