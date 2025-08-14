@@ -161,10 +161,7 @@
 ## 📎 관련 링크 모음
 
 - 🎮 **게임 다운로드**  
-  👉 [다운로드 페이지 바로가기](https://mandlemandle.com/project/c07899/game?contest=10%EB%B6%84%EA%B2%8C%EC%9E%84%EB%B0%A9%EC%B9%98%ED%8E%B8)   
-
-- 📚 **기술 문서 보기**  
-  👉 [문서 PDF 바로가기](https://github.com/BSF0124)   
+  👉 [다운로드 페이지 바로가기](https://mandlemandle.com/project/c07899/game?contest=10%EB%B6%84%EA%B2%8C%EC%9E%84%EB%B0%A9%EC%B9%98%ED%8E%B8)    
   
 - ✍️ **개발 후기 및 기술 소개 (velog)**  
   👉 [Velog 글 읽기](https://velog.io/@dbsdbds4532)
